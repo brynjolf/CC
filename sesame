@@ -1,0 +1,10 @@
+-- vim: ft=lua:
+-- YOLO, hope it is the first one
+local sensor
+for key, name in pairs(peripheral.getNames()) do
+    if (peripiheral.getType(name) == "openperipheral_sensor") then 
+        sensor = peripheral.wrap(name)
+    end
+end
+assert(sensor)
+
