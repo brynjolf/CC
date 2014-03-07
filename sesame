@@ -1,10 +1,30 @@
 -- vim: ft=lua:
--- YOLO, hope it is the first one
-local sensor
+-- True is locking the location
+redstone.setOutput("right",true)
+local sensor,authorisedUsers,authfile,sesameBol
 for key, name in pairs(peripheral.getNames()) do
     if (peripheral.getType(name) == "openperipheral_sensor") then 
         sensor = peripheral.wrap(name)
     end
 end
 assert(sensor)
+authfile = assert(fs.open("auth","r"))
+while (table.insert(authorisedUsers, authfile.readLine())) do end
+while true do
+    sesameBol = false
+    for key, name in pairs(sensor.getPlayerNames()) do
+        for i=0,#authorisedUsers do
+            if name == authorisedUsers[i] then
+                sesameBol = true
+            end
 
+        end
+    end
+
+    if sesameBol then
+        redstone.setOutput("right",false)
+        os.sleep(10)
+        redstone.setOutput("right",false)
+    end
+    os.sleep(1)
+end
