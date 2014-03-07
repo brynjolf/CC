@@ -1,7 +1,7 @@
 -- vim: ft=lua:
 -- True is locking the location
 redstone.setOutput("right",true)
-local sensor,authorisedUsers,authfile,sesameBol
+local sensor,authorisedUsers={},authfile,sesameBol
 for key, name in pairs(peripheral.getNames()) do
     if (peripheral.getType(name) == "openperipheral_sensor") then 
         sensor = peripheral.wrap(name)
