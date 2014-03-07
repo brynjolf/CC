@@ -26,5 +26,5 @@ while true do
     end
 
     redstone.setOutput("left",signal)
-    os.sleep(1)
+    os.sleep(0.5)
 end
