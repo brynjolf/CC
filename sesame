@@ -9,8 +9,11 @@ for key, name in pairs(peripheral.getNames()) do
     end
 end
 assert(sensor)
+
 authfile = assert(fs.open("auth","r"))
 while (table.insert(authorisedUsers, authfile.readLine())) do end
+
+authfile.close()
 while true do
     sesameBol = false
     for key, name in pairs(sensor.getPlayerNames()) do
@@ -23,6 +26,7 @@ while true do
     end
 
     if sesameBol then
+        print("Authorised user detected")
         redstone.setOutput("right",false)
         os.sleep(10)
         redstone.setOutput("right",true)
