@@ -29,7 +29,7 @@ while true do
         print("Authorised user detected")
         redstone.setOutput("left",false)
         os.sleep(10)
-        redstone.setOutput("left",true)
+        redstone.setOutput("",true)
     end
     os.sleep(1)
 end
