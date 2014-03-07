@@ -1,7 +1,8 @@
 -- vim: ft=lua:
 -- True is locking the location
 redstone.setOutput("right",true)
-local sensor,authorisedUsers={},authfile,sesameBol
+local sensor,authfile,sesameBol
+local authorisedUsers = {}
 for key, name in pairs(peripheral.getNames()) do
     if (peripheral.getType(name) == "openperipheral_sensor") then 
         sensor = peripheral.wrap(name)
@@ -24,7 +25,7 @@ while true do
     if sesameBol then
         redstone.setOutput("right",false)
         os.sleep(10)
-        redstone.setOutput("right",false)
+        redstone.setOutput("right",true)
     end
     os.sleep(1)
 end
