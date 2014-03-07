@@ -19,7 +19,7 @@ while true do
     for key, name in pairs(sensor.getPlayerNames()) do
         for i=0,#authorisedUsers do
             if name == authorisedUsers[i] then
-                signal = true
+                signal = false
             end
 
         end
