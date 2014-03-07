@@ -10,14 +10,14 @@ for key, name in pairs(peripheral.getNames()) do
 end
 assert(sensor)
 
-authfile = assert(fs.open("auth","r"))
-while (table.insert(authorisedUsers, authfile.readLine())) do end
-authfile.close()
+for line in io.lines("auth") do
+    table.insert(authorisedUsers, line)
+end
 
 while true do
     signal = true
     for key, name in pairs(sensor.getPlayerNames()) do
-        for i=0,#authorisedUsers do
+        for i=1,#authorisedUsers do
             if name == authorisedUsers[i] then
                 signal = false
             end
