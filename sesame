@@ -12,8 +12,8 @@ assert(sensor)
 
 authfile = assert(fs.open("auth","r"))
 while (table.insert(authorisedUsers, authfile.readLine())) do end
-
 authfile.close()
+
 while true do
     sesameBol = false
     for key, name in pairs(sensor.getPlayerNames()) do
