@@ -1,0 +1,61 @@
+-- vim: ft=lua:
+local monitor,volume
+function wrapPeripheral( _nameOfPer)
+    assert(type(_nameOfPer) == "string", "Please enter the name of the Peripheral")
+    for key, name in pairs(peripheral.getNames()) do
+        if (peripheral.getType(name) == _nameOfPer) then 
+            _per= peripheral.wrap(name)
+        end
+    end
+    assert(_per)
+    return _per
+end
+function switchCrystal() 
+    _i = 1
+    while true do
+        turtle.select(_i)
+        _i=_i + 1
+    end
+    turtle.suckDown()
+    turtle.select(_i)
+    turtle.dropDown()
+end
+
+function volUp()
+    if volume < 15 then
+        volume = volume + 1
+    else
+        volume = 16
+    end
+    setVol(volume)
+end
+
+function volDown()
+    if volume > 0 then
+        volume = volume - 1
+    else
+        volume = 0
+    end
+    setVol(volume)
+end
+
+function setVol(volume) 
+    redstone.setAnalogOutput("down",volume)
+end
+
+function getClick()
+                event,side,x,y = os.pullEvent("monitor_touch")
+                button.checkxy(x, y)
+end                                           
+
+monitor = wrapPeripheral("monitor")
+os.loadAPI("button")
+
+monitor.clear()
+button.setTable("Change station", crystal, 5,50 ,10,20)
+button.setTable("Increase volume", volUp, 5,50 ,10,50)
+button.setTable("Decrease volume", volDown, 5,50 ,10,50)
+
+while true do getClick() end
+
+
