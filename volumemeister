@@ -41,17 +41,17 @@ function volDown()
 end
 
 function setVol(volume) 
-    redstone.setAnalogOutput("down",volume)
+    redstone.setAnalogOutput("bottom",volume)
 end
 
 
 --monitor = wrapPeripheral("monitor")
-os.loadapi("touchpoint")
+os.loadAPI("touchpoint")
 --monitor.clear()
 local t = touchpoint.new("right")
-t:add("Change station", switchCrystal, 1,1,28,11) 
-t:add("Increase volume", volUp, 1,1 ,20,20)
-t:add("Decrease volume", volDown, 1,1 ,30,40)
+t:add("Change station", switchCrystal, 1,1,14,2) 
+t:add("Increase volume", volUp, 1,2 ,14,2)
+t:add("Decrease volume", volDown, 1,3 ,14,2)
 
 t:run()
 while true do
