@@ -10,9 +10,10 @@ function wrapPeripheral( _nameOfPer)
     assert(_per)
     return _per
 end
+
 function switchCrystal() 
     _i = 1
-    while true do
+    while not true do
         turtle.select(_i)
         _i=_i + 1
     end
@@ -43,19 +44,20 @@ function setVol(volume)
     redstone.setAnalogOutput("down",volume)
 end
 
-function getClick()
-                event,side,x,y = os.pullEvent("monitor_touch")
-                button.checkxy(x, y)
-end                                           
 
-monitor = wrapPeripheral("monitor")
-os.loadAPI("button")
+--monitor = wrapPeripheral("monitor")
+os.loadapi("touchpoint")
+--monitor.clear()
+local t = touchpoint.new("right")
+t:add("Change station", switchCrystal, 1,1,28,11) 
+t:add("Increase volume", volUp, 1,1 ,20,20)
+t:add("Decrease volume", volDown, 1,1 ,30,40)
 
-monitor.clear()
-button.setTable("Change station", crystal, 5,50 ,10,20)
-button.setTable("Increase volume", volUp, 5,50 ,10,50)
-button.setTable("Decrease volume", volDown, 5,50 ,10,50)
-
-while true do getClick() end
+t:run()
+while true do
+    --local event, p1 = t:handleEvents(os.pullEvent())
+    --if event == "button_click" then
+    t:run()
+end
 
 
