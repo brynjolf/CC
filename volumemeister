@@ -5,6 +5,7 @@ function wrapPeripheral( _nameOfPer)
     for key, name in pairs(peripheral.getNames()) do
         if (peripheral.getType(name) == _nameOfPer) then 
             _per= peripheral.wrap(name)
+            print("Found peripheral: "..name)
         end
     end
     assert(_per)
