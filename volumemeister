@@ -13,7 +13,7 @@ function wrapPeripheral( _nameOfPer)
 end
 
 function switchCrystal() 
-    _i = 1
+    _i = math.random(5)
     while turtle.getItemCount(_i) == 0 do
         turtle.select(_i)
         _i=_i + 1
