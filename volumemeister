@@ -2,10 +2,10 @@
 local monitor,volume,radio
 function wrapPeripheral( _nameOfPer)
     assert(type(_nameOfPer) == "string", "Please enter the name of the Peripheral")
-    for key, name in pairs(peripheral.getNames()) do
+    for key, direction in pairs(peripheral.getNames()) do
+        print("Found peripheral: "..key)
         if (peripheral.getType(name) == _nameOfPer) then 
-            _per= peripheral.wrap(name)
-            print("Found peripheral: "..name)
+            _per= peripheral.wrap(direction)
         end
     end
     assert(_per)
