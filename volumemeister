@@ -65,7 +65,7 @@ monitor.clear()
 while true do
     local event, button, x, y = os.pullEvent()
     if y < 4 then switchCrystal()
-    else y < 6 volUp()
+    elseif y < 6 volUp()
     else volDown()
     end
     --if event == "button_click" then
