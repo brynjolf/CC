@@ -1,5 +1,5 @@
 -- vim: ft=lua:
-local monitor,volume
+local monitor,volume,radio
 function wrapPeripheral( _nameOfPer)
     assert(type(_nameOfPer) == "string", "Please enter the name of the Peripheral")
     for key, name in pairs(peripheral.getNames()) do
@@ -48,8 +48,8 @@ function drawButtons()
     _x,_y = monitor.getSize()
     _border = 1 
     relY,relX =0
-    monitor.setTextScale(0.3)
-    monitor.write(tostring(peripheral.call("bottom",name)))
+    monitor.setTextScale(0.5)
+    monitor.write(radio.getStackinSlot(1) == type("string") or "No station")
     monitor.setTextScale(1)
     relY = relY + _border+2
     monitor.setCursorPos(1,relY)
@@ -63,6 +63,7 @@ function drawButtons()
 end
 
 monitor = wrapPeripheral("monitor")
+radio = wrapPeripheral("radio")
 monitor.clear()
 monitor.setTextColor(colors.cyan)
 drawButtons()
