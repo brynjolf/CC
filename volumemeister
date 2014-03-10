@@ -63,6 +63,7 @@ monitor = wrapPeripheral("monitor")
 monitor.clear()
 monitor.setTextColor(colors.cyan)
 drawButtons()
+volume = 0
 while true do
     local event, button, x, y = os.pullEvent()
     if event == "mouse_click" then
