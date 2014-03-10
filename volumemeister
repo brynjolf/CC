@@ -76,7 +76,7 @@ while true do
         print(tostring(y))
     if y < 4 then
         switchCrystal()
-    elseif y > 6 && < 9 then
+    elseif y > 6 and  y < 9 then
         volUp()
     elseif y > 8 then 
         volDown()
