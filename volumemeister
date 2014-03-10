@@ -61,7 +61,8 @@ end
 
 monitor = wrapPeripheral("monitor")
 monitor.clear()
-
+monitor.setTextColor(color.cyan)
+drawButtons()
 while true do
     local event, button, x, y = os.pullEvent()
     if y < 4 then
