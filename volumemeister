@@ -16,6 +16,7 @@ function switchCrystal()
     _i = math.random(5)
     while turtle.getItemCount(_i) == 0 do
         turtle.select(_i)
+        if _i == 16 then _i = 0 end
         _i=_i + 1
     end
     turtle.suckDown()
