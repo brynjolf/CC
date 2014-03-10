@@ -49,8 +49,8 @@ function drawButtons()
     _border = 1 
     relY,relX =0
     monitor.setTextScale(0.5)
-    monitor.write(radio.getStackInSlot(1) == type("string") or "No station")
-    monitor.setTextScale(1)
+    monitor.write(radio.getStackInSlot(1).name == type("string") or "No
+    station") monitor.setTextScale(1)
     relY = relY + _border+2
     monitor.setCursorPos(1,relY)
     monitor.write("Change station")
