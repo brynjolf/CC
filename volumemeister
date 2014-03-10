@@ -2,10 +2,10 @@
 local monitor,volume,radio
 function wrapPeripheral( _nameOfPer)
     assert(type(_nameOfPer) == "string", "Please enter the name of the Peripheral")
-    for key, direction in pairs(peripheral.getNames()) do
-        print("Found peripheral: "..key)
+    for key, name in pairs(peripheral.getNames()) do
+        --print("Found peripheral: "..name)
         if (peripheral.getType(name) == _nameOfPer) then 
-            _per= peripheral.wrap(direction)
+            _per= peripheral.wrap(name)
         end
     end
     assert(_per)
@@ -64,7 +64,7 @@ function drawButtons()
 end
 
 monitor = wrapPeripheral("monitor")
-radio = wrapPeripheral("radio")
+radio = wrapPeripheral("openblocks_radio")
 monitor.clear()
 monitor.setTextColor(colors.cyan)
 drawButtons()
