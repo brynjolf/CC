@@ -62,7 +62,7 @@ function drawButtons()
     monitor.setCursorPos(1,relY)
     monitor.write("Decrease volume")
 end
-
+redstone.setAnalogOutput("bottom",1)
 monitor = wrapPeripheral("monitor")
 radio = wrapPeripheral("openblocks_radio")
 monitor.clear()
@@ -75,9 +75,9 @@ while true do
         print(tostring(y))
     if y < 4 then
         switchCrystal()
-    elseif y < 6 then
+    elseif y > 6 then
         volUp()
-    else 
+    elseif y> 8 then 
         volDown()
     end
 end
