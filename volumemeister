@@ -54,17 +54,18 @@ function drawButtons()
     relY = relY + _border + 3
     monitor.setCursorPos(1,relY)
     monitor.write("Increase volume")
-    relY = relY + _border
+    relY = relY + _border+1
     monitor.setCursorPos(1,relY)
     monitor.write("Decrease volume")
 end
 
 monitor = wrapPeripheral("monitor")
 monitor.clear()
-monitor.setTextColor(color.cyan)
+monitor.setTextColor(colors.cyan)
 drawButtons()
 while true do
     local event, button, x, y = os.pullEvent()
+    if event == "mouse_click" then
     if y < 4 then
         switchCrystal()
     elseif y < 6 then
@@ -72,6 +73,7 @@ while true do
     else 
         volDown()
     end
+end
     --if event == "button_click" then
 end
 
