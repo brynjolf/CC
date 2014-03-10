@@ -24,10 +24,10 @@ function switchCrystal()
 end
 
 function volUp()
-    if volume <= 15 then
+    if volume <= 14 then
         volume = volume + 1
     else
-        volume = 16
+        volume = 15
     end
     setVol(volume)
 end
